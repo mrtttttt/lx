@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.big{
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		h1{
+			position: absolute;
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="big"></div>
+	<div class="big"></div>
+	<div class="big"></div>
+	<div class="big"></div>
+	<div class="big"></div>
+	<div class="big"></div>
+	<div class="big"></div>
+	<div class="big"></div>
+	<!--<h1>H1</h1>-->
+</body>
+</html>
+<script src="js/drag.js"></script>
+<script>
+	window.onload = function(){
+		let big = document.querySelectorAll('.big');
+		big.forEach(function(element){
+			let a = new drag(element);
+			a.move();
+		})
+		let h1 = document.querySelector('h1');
+//		let a = new drag(big);
+		let b = new drag(h1);
+//		a.move();
+		b.move();
+	}
+</script>

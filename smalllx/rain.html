@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		html,body{
+			width: 100%;
+			height: 100%;
+			background: #000;
+			overflow: hidden;
+		}
+		.rain{
+			width: 1px;
+			height: 20px;
+			filter: blur(1px);
+			background: #fff;
+			position: absolute;
+			left: 0;
+			top: 0;
+			transition:1s;
+		}
+	</style>
+</head>
+<body>
+	
+</body>
+</html>
+<script>
+	/**
+	 * 浏览器内核
+	 * -webkit- 谷歌     -moz- 火狐    -ms- IE
+	 * 添加事件监听
+	 * addEventListener('TransitionEnd',function(){})
+	 */
+	// let rain = [];
+	//400个雨点
+	for(let i=0;i<200;i++){
+		let divs = document.createElement('div');
+		divs.classList.add('rain');
+		let lefts = Math.random()*(window.innerWidth-200)+100;
+		let tops = Math.random()*50-100;
+		let heights = Math.round(Math.random()*50+10);
+		divs.style.top = `${tops}px`;
+		divs.style.left = `${lefts}px`;
+		divs.style.height = `${heights}px`;
+		document.body.appendChild(divs);
+		// rain.push(divs);
+	}
+	document.body.onclick = function(){
+		let rain = document.querySelectorAll('.rain');
+		rain.forEach(elements =>{
+			elements.style.transitionDelay = `${Math.random()}s`;
+			elements.style.top = `${window.innerHeight+50}px`;
+
+			elements.addEventListener('webkitTransitionEnd',function(){
+				elements.style.transition ='none';
+				elements.style.top = '-70px';
+				
+				setTimeout(function(){
+					elements.style.transition = `1s ${Math.random()}s`;
+					elements.style.top = `${window.innerHeight+50}px`;
+				},1)
+			})
+		})
+	}
+</script>

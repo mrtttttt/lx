@@ -1,0 +1,121 @@
+@font-face {
+  font-family: 'iconfont';  /* project id 400725 */
+  src: url('http://at.alicdn.com/t/font_400725_0srb43z6ehjb57b9.eot');
+  src: url('http://at.alicdn.com/t/font_400725_0srb43z6ehjb57b9.eot?#iefix') format('embedded-opentype'),
+  url('http://at.alicdn.com/t/font_400725_0srb43z6ehjb57b9.woff') format('woff'),
+  url('http://at.alicdn.com/t/font_400725_0srb43z6ehjb57b9.ttf') format('truetype'),
+  url('http://at.alicdn.com/t/font_400725_0srb43z6ehjb57b9.svg#iconfont') format('svg');
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+}
+body{
+	overflow: hidden;
+}
+p{
+	width: 80px;text-align: center;
+	font-weight: bold;
+	font-family: "华文仿宋";font-size: 30px;
+	padding-left: 20px;
+	line-height: 50px;float: left;
+}
+.shape{
+	width: 100px;
+	height: auto;
+	text-align: center;
+	position: absolute;
+	top: 50px;
+	left: 0;
+}
+.shape>li{
+	background: #F5F6F7;
+	padding: 5px 10px;
+	line-height: 30px;
+	margin-left: 20px;
+	border:1px solid #eee;border-radius: 3px;
+}
+.shape>input{
+	position: absolute;
+	right: 2px;
+	width: 20px;
+	height: 20px;
+}
+.shape>input:nth-of-type(1){
+	bottom: 53px;
+}
+.shape>input:nth-of-type(2){
+	bottom: 10px;
+}
+.top{
+	float: left;
+	border: 1px solid #eee;
+	margin-top: 5px;
+	border-radius: 5px;
+}
+.top>li,a{
+	width: 40px;
+	height: 40px;
+	margin-right: 2px;
+	font-size: 22px;
+	float: left;
+	display: block;
+	color: #000;cursor: pointer;
+	line-height: 40px;
+	text-align: center;
+
+}
+.top>li:nth-of-type(2){
+	font-size: 30px;
+}
+.top a{
+	font-size: 26px;
+}
+.main{
+	width: 1226px;
+	height: 502px;
+	border: 1px solid #ccc;
+	position: absolute;
+	left: 100px;
+	top: 50px;
+}
+canvas,.mask{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.eraser{
+	width: 20px;
+	height: 20px;
+	border-radius: 3px;
+	background: #000;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+}
+.clip{
+	display: none;
+	border: 1px dashed #999999;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.shape .checked{
+	border: 1px solid #ff6700;
+}
+.font{
+	min-width: 100px;
+	min-height: 50px;
+	line-height: 20px;
+	border: 1px solid #eee;
+	position: absolute;
+	top: 0;
+	left: 0;
+}

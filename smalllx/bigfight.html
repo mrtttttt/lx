@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/$getNode.js"></script>
+		<style>
+			.point{
+				width: 1px;
+				height: 1px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				margin: auto;
+			}
+			.circle{
+				width: 10px;
+				height: 10px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				border-radius: 50%;
+				transition: 1s;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="point"></div>
+		<script>
+			$(function(){
+				let point = document.querySelector('div.point');
+				let cw = window.innerWidth-80,ch = window.innerHeight-80;
+				for(let i=0;i<100;i++){
+					let divs = document.createElement('div');
+					//圆的随机宽高
+					let widths = Math.round(Math.random()*20+20);
+					divs.classList.add('circle');
+					
+					//随机位置
+					let lefts = Math.round(Math.random()*cw-cw/2);
+					let tops = Math.round(Math.random()*ch-ch/2);
+					divs.style.cssText = `
+						width:${widths}px;
+						height:${widths}px;
+						background:${bgColor()};
+		//				left:${lefts}px;
+		//				top:${tops}px;
+					`;
+					point.appendChild(divs);
+					
+					setTimeout(() =>{
+						divs.style.left =`${lefts}px`
+						divs.style.top =`${tops}px`
+					},1)
+					
+				}
+				//随机颜色
+				function bgColor(){
+					let r = Math.floor(Math.random()*256);
+					let g = Math.floor(Math.random()*256);
+					let b = Math.floor(Math.random()*256);
+					return `rgb(${r},${g},${b})`;
+				}
+			})
+		</script>
+	</body>
+</html>

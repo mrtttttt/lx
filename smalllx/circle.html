@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		.point{
+			width: 1px;
+			height: 1px;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			
+		}
+		.circle{
+			width:10px;
+			height: 10px;
+			background: orange;
+			position: absolute;
+			top: 0;
+			left: 0;
+			border-radius: 50%;
+			transition: .5s cubic-bezier(0.44,-0.42, 0.54, 1.65);
+		}
+	</style>
+	<body>
+		<div class="point">
+			
+		</div>
+	</body>
+</html>
+<script>
+	/**
+//	 * for  12{
+	 * 	 r*cos(i*360/12*PI /180)    r*sin(i*360/12*PI /180)
+	 * }
+	 * r=50
+	 */
+	let point = document.querySelector('div.point');
+	let r=120 , num=360, every=60 ,deg=360/every,t=100;
+	const bl = Math.PI/180;
+	for(let i=0;i<num;i++){
+		let divs = document.createElement('div');
+		divs.classList.add('circle');
+		let degs = i*deg*bl;
+		if(!(i%every)){
+			r+=30;
+			t+=1000;
+		}
+		let lefts = r*Math.cos(degs);
+		let tops = r*Math.sin(degs);
+		t+=20;
+		divs.style.transitionDelay = `${t}ms`;
+		divs.style.background = `${bgColor()}`;
+		setTimeout(()=>{
+			divs.style.left = `${lefts}px`;
+			divs.style.top = `${tops}px`;
+		},10)
+		point.appendChild(divs);
+	}
+	
+	
+	function bgColor(){
+			let r = Math.floor(Math.random()*256);
+			let g = Math.floor(Math.random()*256);
+			let b = Math.floor(Math.random()*256);
+			return `rgb(${r},${g},${b})`;
+		}
+</script>

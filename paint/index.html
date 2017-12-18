@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>画板</title>
+		<link rel="stylesheet" type="text/css" href="css/draws.css"/>
+		<link rel="stylesheet" type="text/css" href="css/font_400725_z4cx6onmo9urqkt9/iconfont.css"/>
+	</head>
+	<body>
+		<p>画板</p>
+		<ul class="top">
+			<li class="iconfont newDraw" title="新建">&#xe6a2;</li>
+			<li class="iconfont fanxiang" title="反向">&#xe613;</li>
+			<li class="iconfont ctrlZ" title="撤销">&#xe62f;</li>
+			<a href="" class="save iconfont icon-g-tool-save" title="保存"></a>
+		</ul>
+		<ul class="shape">
+			<li id="line" class="iconfont icon-line"></li>
+			<li id="dashed" class="iconfont icon-e_xuxian"></li>
+			<li id="pencil" class="iconfont icon-huabi"></li>
+			<li id="square" class="iconfont icon-juxing"></li>
+			<li id="circle" class="iconfont icon-iconfontwancheng"></li>
+			<li id="polygon" class="iconfont icon-duobianxing"></li>
+			<li id="polygonStar" class="iconfont icon-wujiaoxing"></li>
+			<li id="font" class="iconfont icon-ziti"></li>
+			<li id="clear" class="iconfont icon-xiangpica-copy"></li>
+			<li class="iconfont icon-jiancai"></li>
+			<li class="iconfont icon-tianchong style"></li>
+			<input type="color"></input>
+			<li class="iconfont icon-miaobian style checked"></li>
+			<input type="color"></input>
+			
+			
+		</ul>
+		<div class="main">
+			<canvas width="1226" height="502"></canvas>
+			<div class="eraser"></div>
+			<div class="clip"></div>
+			<div class="mask"></div>
+		</div>
+	</body>
+</html>
+<script src="js/click.js"></script>
+<script src="js/draws.js"></script>
+<script>
+	let canvas = document.querySelector('canvas');
+	let mask = document.querySelector('.mask');
+	const PI=Math.PI;
+	
+	let draw = new draws(canvas,mask);
+</script>

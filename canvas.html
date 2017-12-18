@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<canvas width="500" height="500"></canvas>
+<script>
+    window.onload=function () {
+        var canvas=document.querySelector("canvas");
+        var data=canvas.getContext("2d");
+        var x=200,y=200;
+        function circle() {
+            this.x=x;
+            this.y=y;
+            this.r=10;
+            this.color="rgb("+parseInt(255*Math.random())+","+parseInt(255*Math.random())+","+parseInt(255*Math.random())+")";
+            this.speedx=-5+10*Math.random();
+            this.speedy=-10;
+            this.zhongli=0.3;
+        }
+        circle.prototype={
+            draw:function () {
+                data.save();
+                data.beginPath();
+                data.fillStyle=this.color;
+                data.arc(this.x,this.y,this.r,0,2*Math.PI);
+                data.fill();
+                data.restore();
+            },
+            update:function(){
+                this.speedy+=this.zhongli;
+                this.x+=this.speedx;
+                this.y+=this.speedy;
+            }
+        }
+        canvas.onmousemove=function (e) {
+            x=e.offsetX;
+            y=e.offsetY;
+        }
+        var arr=[];
+        setInterval(function () {
+            data.clearRect(0,0,500,500);
+            var obj=new circle();
+            arr.push(obj);
+            if(arr.length>200){
+                arr.shift();
+            }
+            for(let i=0;i<arr.length;i++){
+                arr[i].draw();
+                arr[i].update();
+            }
+        },50)
+    }
+</script>
+</body>
+</html>

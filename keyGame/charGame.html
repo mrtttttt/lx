@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+
+		}
+		body{
+			background:rgba(0,0,0,0.3);
+		}
+		.one{
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			margin: auto;
+			width: 200px;
+			height: 300px;
+			/* background: #fff; */
+		}
+		.one>button{
+			float: left;
+			margin-top: 50px;
+			margin-left: 25px;
+			margin-right: 0;
+		}
+		.two{
+			width: 100%;
+			height: 50px;
+			position: absolute;
+			bottom: 30px;
+			right: 30px;
+			font-size: 16px;
+			font-weight: bold;
+			font-family: '微软雅黑';
+			display: none;
+		}
+		.two>div{
+			float: right;
+			margin-right: 20px;
+			line-height: 50px;
+		}
+		button{
+			float: right;
+			width: 150px;
+			height: 50px;
+			background: #599EC0;
+			color: #fff;
+			line-height: 50px;
+			border: none;
+			outline: none;
+			padding: 1px;
+			border-radius: 50px;
+			margin-left: 30px;
+			/* filter: blur(1px) */
+			/* box-shadow: 0 0 2px 10px #599EC0;  */
+			cursor: pointer;
+			box-sizing: border-box;
+		}
+		button:hover{
+			background: #fff;
+			color: #599EC0;
+			border: 1px solid #599EC0;
+		}
+		.char{
+			width: 50px;
+			height: 50px;
+			background: no-repeat center/cover;
+			color: #fff;
+			background-size: contain;
+			position: absolute;
+			top: 0;
+			left: 0;
+			text-align: center;
+			line-height: 50px;
+			font-size: 0;
+		}
+		.score{
+			color: #599EC0;
+		}
+	</style>
+</head>
+<body>
+	<div class="one">
+		<button class="begin">开始游戏</button><br>
+		<button class="quit">退出游戏</button>
+	</div>
+	<div class="two">
+		<button class="quit2">退出游戏</button>
+		<button class="stop">暂停</button>
+		<button class="restart">重新开始</button>
+		<div>总得分：<span class="score">0</span></div>
+		<div>生命值：<span class="lifes">10</span></div>
+		<div>等级：<span class="leave">1</span></div>
+	</div>
+</body>
+</html>
+<script src="js/charGame.js"></script>
+<script>
+	window.onload = function(){
+		let begin = document.querySelector('.begin');
+		let quit = document.querySelector('.quit');
+		let quit2 = document.querySelector('.quit2');
+		let restart = document.querySelector('.restart');
+		let stop = document.querySelector('.stop');
+		let one = document.querySelector('.one');
+		let two = document.querySelector('.two');
+
+		let game = new Game();
+		let flag =true;
+		let stopFlag = true;
+		begin.onclick = function(){
+			if(flag){
+				one.style.display = 'none';
+				document.body.style.background = 'none';
+				two.style.display = 'block';
+				game.start();
+			}
+			flag = false;
+		}
+		restart.onclick = function(){
+			game.restart();
+		}
+		quit.onclick = function(){
+			close();
+		}
+		quit2.onclick = function(){
+			close();
+		}
+		stop.onclick = function(){
+			if(stopFlag){
+				game.stop();
+			}else{
+				game.nostop();
+			}
+			stopFlag = !stopFlag;
+		}
+	}
+
+
+</script>
